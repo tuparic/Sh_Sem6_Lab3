@@ -18,9 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp", "WpfApp\WpfApp.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModel", "ViewModel\ViewModel.csproj", "{538ADE4F-F03E-4469-9C4D-F8290366D925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_ClassLibrary", "Test_ClassLibrary\Test_ClassLibrary.csproj", "{A18313D7-2718-42D3-A5B5-994F3AA0083F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_ClassLibrary", "Test_ClassLibrary\Test_ClassLibrary.csproj", "{A18313D7-2718-42D3-A5B5-994F3AA0083F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_ViewModel", "Test_ViewModel\Test_ViewModel.csproj", "{CA838AD7-CF03-4642-8E46-3DF71D770F54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_ViewModel", "Test_ViewModel\Test_ViewModel.csproj", "{CA838AD7-CF03-4642-8E46-3DF71D770F54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,7 +32,8 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A2B3C562-6972-46C3-90B2-F9A7DD63DCE7}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{A2B3C562-6972-46C3-90B2-F9A7DD63DCE7}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{A2B3C562-6972-46C3-90B2-F9A7DD63DCE7}.Debug|Any CPU.Build.0 = Debug|x64
 		{A2B3C562-6972-46C3-90B2-F9A7DD63DCE7}.Debug|x64.ActiveCfg = Debug|x64
 		{A2B3C562-6972-46C3-90B2-F9A7DD63DCE7}.Debug|x64.Build.0 = Debug|x64
 		{A2B3C562-6972-46C3-90B2-F9A7DD63DCE7}.Debug|x86.ActiveCfg = Debug|x64
