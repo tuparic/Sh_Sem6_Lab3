@@ -37,7 +37,8 @@ namespace Test_ViewModel
             leftdif = 0;
             rightdif = 0;
             var er = new Mock<IUIServices>();
-            viewData = new ViewData(er.Object);
+            var er_1 = new Mock<FSServices>();
+            viewData = new ViewData(er.Object, er_1.Object);
             init_vd();
             viewData.RunCommand.Execute(null);
             er.Verify(r => r.ReportError(It.IsAny<string>()), Times.Never);
@@ -56,7 +57,8 @@ namespace Test_ViewModel
             leftEnd = 10;
             rightEnd = 1;
             var er = new Mock<IUIServices>();
-            viewData = new ViewData(er.Object);
+            var er_1 = new Mock<FSServices>();
+            viewData = new ViewData(er.Object, er_1.Object);
             init_vd();
             viewData.RunCommand.Execute(null);
             er.Verify(r => r.ReportError(It.IsAny<string>()), Times.Once);
@@ -68,7 +70,8 @@ namespace Test_ViewModel
             rightdif = 0;
             nGrid = 1;
             var er = new Mock<IUIServices>();
-            viewData = new ViewData(er.Object);
+            var er_1 = new Mock<FSServices>();
+            viewData = new ViewData(er.Object, er_1.Object);
             init_vd();
             viewData.RunCommand.Execute(null);
             er.Verify(r => r.ReportError(It.IsAny<string>()), Times.Once);
@@ -80,7 +83,8 @@ namespace Test_ViewModel
             rightdif = 0;
             nRawNodes = -1;
             var er = new Mock<IUIServices>();
-            viewData = new ViewData(er.Object);
+            var er_1 = new Mock<FSServices>();
+            viewData = new ViewData(er.Object, er_1.Object);
             init_vd();
             viewData.RunCommand.Execute(null);
             er.Verify(r => r.ReportError(It.IsAny<string>()), Times.Once);

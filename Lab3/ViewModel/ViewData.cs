@@ -1,10 +1,9 @@
 using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows;
 using System.Windows.Input;
 using ClassLibrary;
-using Microsoft.Win32;
 using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.Legends;
@@ -15,6 +14,11 @@ namespace ViewModel
     public interface IUIServices
     {
         void ReportError(string message);
+    }
+    public interface FSServices
+    {
+        public string Get_Save_Filename();
+        public string Get_Load_Filename();
     }
     public partial class ViewData : ViewModelBase, IDataErrorInfo
     {
@@ -32,6 +36,8 @@ namespace ViewModel
         public SplineData splineData { get; set; }
 
         private readonly IUIServices uiServices;
+        private readonly FSServices fsServices;
+
 
         public ICommand RunCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
@@ -46,6 +52,8 @@ namespace ViewModel
         {
             get => splineData != null ? splineData.integral.ToString("##00.000") : null;
         }
+
+        
             
 
         public string Error { get { return "Error Text"; } }
@@ -75,7 +83,7 @@ namespace ViewModel
             }
         }
 
-        public ViewData(IUIServices uiServices)
+        public ViewData(IUIServices uiServices, FSServices fsServices)
         {
             leftEnd = 1;
             rightEnd = 10;
@@ -90,6 +98,7 @@ namespace ViewModel
             listFRaw.Add(FRawFunctions.rand);
             fRaw = listFRaw[0];
             this.uiServices = uiServices;
+            this.fsServices = fsServices;
             RunCommand = new RelayCommand(ExecuteSplines, Correct_Info);
             LoadCommand = new RelayCommand(Load, Correct_Data);
             SaveCommand = new RelayCommand(Save, Correct_Data);
@@ -118,13 +127,9 @@ namespace ViewModel
         {
             try
             {
-                Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-                Nullable<bool> result = dlg.ShowDialog();
-                if (result == true)
-                {
-                    string filename = dlg.FileName;
+                string? filename = fsServices.Get_Save_Filename();
+                if (filename != null)
                     rawData.Save(filename);
-                }
             }
             catch (Exception e)
             {
@@ -136,11 +141,9 @@ namespace ViewModel
         {
             try
             {
-                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-                Nullable<bool> result = dlg.ShowDialog();
-                if (result == true)
+                string? filename = fsServices.Get_Load_Filename();
+                if (filename != null)
                 {
-                    string filename = dlg.FileName;
                     rawData = new RawData(filename);
                     leftEnd = rawData.leftEnd;
                     rightEnd = rawData.rightEnd;

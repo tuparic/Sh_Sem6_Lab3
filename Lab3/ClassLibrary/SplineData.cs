@@ -22,7 +22,7 @@ namespace ClassLibrary
             data = new List<SplineDataItem>();
         }
 
-        [DllImport("D:/Study/MSU/C#/L2/Solution_Lab1/x64/Debug/Dll.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        [DllImport("..\\..\\..\\..\\..\\Lab3\\x64\\Debug\\Dll.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern int spline_dll(int n, int n_1, double[] init_NU_grid, double[] val_init_NU_grid,
                                               double[] dif_2, double[] st_end, double[] val_res,
                                               double[] spline_coef, double[] integral, ref int code);
